@@ -39,8 +39,8 @@ module.exports = {
 
             
 // delete thought
-    deleteThought({ params }, res) {
-        Thought.findOneAndDelete({ _id: params.id })
+    deleteThought(req, res) {
+        Thought.findOneAndDelete({ _id: req.params.id })
             .then((dbThoughtData) => {
                 if (!dbThoughtData) {
                     res.status(404).json({ message: 'No thought found with this id!' }
@@ -52,4 +52,5 @@ module.exports = {
             )
             .catch((err) => res.status(400).json(err));
             console.log(err);
-    },
+    }
+};
